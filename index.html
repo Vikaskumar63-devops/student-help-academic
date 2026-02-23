@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Help in Academic – Complete Academic Support</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --blue: #1a56db;
+    --sky: #38bdf8;
+    --mint: #10b981;
+    --amber: #f59e0b;
+    --light: #f0f7ff;
+    --white: #ffffff;
+    --gray: #64748b;
+    --light-gray: #e2e8f0;
+    --card-bg: #ffffff;
+    --text: #0f172a;
+    --radius: 16px;
+    --shadow: 0 8px 32px rgba(10,22,40,0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Sora', sans-serif; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--light-gray);
+    padding: 0 2rem;
+    height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 24px rgba(10,22,40,0.08); }
+
+  .logo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--navy);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .logo span { color: var(--blue); }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--blue), var(--sky));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 1rem;
+  }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--gray);
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: white !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: #1344bb !important; transform: translateY(-1px); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 4px;
+    border: none; background: none;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a1628 0%, #0f2550 50%, #0a1628 100%);
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+    padding: 0 2rem;
+  }
+
+  .hero-bg-shapes {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .hero-bg-shapes::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,86,219,0.25) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    animation: pulse 6s ease-in-out infinite;
+  }
+  .hero-bg-shapes::after {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%);
+    bottom: -50px; left: 10%;
+    animation: pulse 8s ease-in-out infinite 2s;
+  }
+
+  @keyframes pulse {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+  }
+
+  .hero-content {
+    max-width: 1200px; width: 100%; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    padding-top: 5rem;
+    position: relative; z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(56,189,248,0.15);
+    border: 1px solid rgba(56,189,248,0.3);
+    color: var(--sky);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-badge::before { content: '✦'; font-size: 0.7rem; }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 800;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+  .hero-title .accent { color: var(--sky); }
+
+  .hero-desc {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.95rem;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    box-shadow: 0 4px 20px rgba(26,86,219,0.4);
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { background: #1344bb; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(26,86,219,0.5); }
+
+  .btn-whatsapp {
+    background: #25D366;
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.95rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
+
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--sky);
+  }
+  .stat-label {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.78rem;
+    margin-top: 0.3rem;
+  }
+
+  .hero-visual {
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+  .hero-card-stack {
+    position: relative;
+    height: 420px;
+  }
+  .floating-card {
+    position: absolute;
+    background: white;
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .fc1 { top: 20px; right: 0; left: 30px; animation: float1 4s ease-in-out infinite; }
+  .fc2 { top: 120px; right: 20px; left: 0; animation: float2 5s ease-in-out infinite 1s; }
+  .fc3 { top: 230px; right: 0; left: 40px; animation: float1 4.5s ease-in-out infinite 0.5s; }
+  .fc4 { top: 330px; right: 30px; left: 0; animation: float2 4s ease-in-out infinite 1.5s; }
+
+  @keyframes float1 {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes float2 {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fc-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .fc-text .fc-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+  .fc-text .fc-sub { font-size: 0.78rem; color: var(--gray); margin-top: 0.2rem; }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-tag {
+    display: inline-block;
+    background: #e0f2fe;
+    color: var(--blue);
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .section-title .accent { color: var(--blue); }
+
+  .section-desc {
+    color: var(--gray);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    max-width: 560px;
+  }
+
+  /* ── WHY CHOOSE US ── */
+  #why { background: var(--light); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .why-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .why-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--sky));
+  }
+  .why-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(10,22,40,0.14); }
+  .why-icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+  .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy); }
+  .why-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
+
+  /* ── SERVICES ── */
+  #services { background: white; }
+  .services-header { text-align: center; margin-bottom: 3.5rem; }
+  .services-header .section-desc { margin: 0 auto; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: white;
+    border: 1.5px solid var(--light-gray);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26,86,219,0.03), rgba(56,189,248,0.03));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .service-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(26,86,219,0.12);
+  }
+  .service-card:hover::after { opacity: 1; }
+  .service-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--light-gray);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .service-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .service-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+  .service-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
+
+  .badge-row {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin-top: 0.8rem;
+  }
+  .badge {
+    background: #e0f2fe;
+    color: var(--blue);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+  }
+  .badge.green { background: #d1fae5; color: var(--mint); }
+
+  /* ── BOOKING ── */
+  #booking { background: var(--light); }
+  .booking-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem; align-items: start;
+    margin-top: 2rem;
+  }
+  .booking-info h2 { font-size: 2rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem; }
+  .booking-info p { color: var(--gray); line-height: 1.75; margin-bottom: 2rem; }
+  .booking-perks { display: flex; flex-direction: column; gap: 0.8rem; }
+  .perk {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.92rem; color: var(--text);
+  }
+  .perk-dot {
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--blue), var(--sky));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 0.75rem; flex-shrink: 0;
+  }
+
+  .booking-form {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+  }
+  .booking-form h3 {
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 1.5rem;
+  }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid var(--light-gray);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.93rem;
+    color: var(--text);
+    background: #fafbfc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(26,86,219,0.08);
+    background: white;
+  }
+  .form-group textarea { min-height: 110px; resize: vertical; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .btn-submit {
+    width: 100%;
+    background: linear-gradient(135deg, var(--blue), #1e78e0);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(26,86,219,0.35);
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(26,86,219,0.45); }
+
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 1.5rem;
+    background: #d1fae5;
+    border-radius: 10px;
+    color: #065f46;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  /* ── BOOKING CTA ── */
+  .booking-cta-wrap {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 12px 48px rgba(10,22,40,0.10);
+    border: 1.5px solid var(--light-gray);
+  }
+  .booking-perks-row {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+  .bp-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: var(--light);
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--navy);
+  }
+  .btn-book-wa {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: #25D366;
+    color: white;
+    padding: 1.1rem 2.8rem;
+    border-radius: 14px;
+    text-decoration: none;
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    box-shadow: 0 6px 28px rgba(37,211,102,0.45);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 1rem;
+  }
+  .btn-book-wa:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(37,211,102,0.55); }
+  .wa-book-hint {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-top: 0.5rem;
+  }
+
+  .gform-container {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1.5px solid var(--light-gray);
+    margin-bottom: 1rem;
+    background: #fafbfc;
+  }
+  .gform-container iframe {
+    display: block;
+    min-height: 720px;
+  }
+  .gform-note {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: #e0f2fe;
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    font-size: 0.85rem;
+    color: #0369a1;
+    font-weight: 500;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: white; }
+  .test-header { text-align: center; margin-bottom: 3rem; }
+  .test-header .section-desc { margin: 0 auto; }
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .test-card {
+    background: var(--light);
+    border-radius: var(--radius);
+    padding: 2rem;
+    position: relative;
+    border: 1px solid rgba(26,86,219,0.08);
+  }
+  .test-card::before {
+    content: '"';
+    font-family: Georgia, serif;
+    font-size: 5rem;
+    color: var(--blue);
+    opacity: 0.15;
+    position: absolute;
+    top: 0.5rem; left: 1.2rem;
+    line-height: 1;
+  }
+  .stars { color: var(--amber); font-size: 1rem; margin-bottom: 0.8rem; }
+  .test-text { font-size: 0.93rem; color: #334155; line-height: 1.75; margin-bottom: 1.2rem; }
+  .test-author { display: flex; align-items: center; gap: 0.8rem; }
+  .test-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: white; font-size: 1rem;
+    font-family: 'Sora', sans-serif;
+  }
+  .test-name { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+  .test-role { font-size: 0.78rem; color: var(--gray); }
+
+  /* ── FAQ ── */
+  #faq { background: var(--light); }
+  .faq-header { text-align: center; margin-bottom: 3rem; }
+  .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--light-gray);
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 1.2rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.97rem;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--navy);
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .faq-q:hover { background: var(--light); }
+  .faq-arrow {
+    width: 28px; height: 28px;
+    background: var(--light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    transition: transform 0.3s, background 0.2s;
+    flex-shrink: 0;
+    color: var(--blue);
+  }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); background: var(--blue); color: white; }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    font-size: 0.92rem; color: var(--gray);
+    line-height: 1.75;
+    transition: max-height 0.4s ease, padding 0.3s;
+    padding: 0 1.5rem;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 1.5rem 1.2rem; }
+
+  /* ── CONTACT ── */
+  #contact { background: white; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    margin-top: 2rem;
+  }
+  .contact-card {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 3rem;
+    color: white;
+  }
+  .contact-card h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 1rem; }
+  .contact-card p { color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 2rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .contact-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-item-text .label { font-size: 0.78rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+  .contact-item-text .value { font-weight: 600; font-size: 0.95rem; color: white; }
+
+  .btn-whatsapp-lg {
+    display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+    background: #25D366;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Sora', sans-serif;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    margin-top: 2rem;
+  }
+  .btn-whatsapp-lg:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
+
+  .contact-visual { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-highlight {
+    background: var(--light);
+    border-radius: 16px;
+    padding: 1.8rem;
+    border: 1.5px solid rgba(26,86,219,0.1);
+  }
+  .contact-highlight h3 { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+  .contact-highlight p { font-size: 0.9rem; color: var(--gray); line-height: 1.65; }
+  .guarantee-badge {
+    display: flex; align-items: center; gap: 1rem;
+    background: linear-gradient(135deg, #0a1628, #1a3a6e);
+    color: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+  .gb-icon { font-size: 2rem; }
+  .gb-text .gb-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1rem; }
+  .gb-text .gb-sub { font-size: 0.82rem; color: rgba(255,255,255,0.65); margin-top: 0.2rem; }
+
+  /* ── FLOATING WA BUTTON ── */
+  .wa-float {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    z-index: 900;
+    background: #25D366;
+    color: white;
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.7rem;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+    text-decoration: none;
+    transition: transform 0.2s;
+    animation: waPop 0.5s ease 2s both;
+  }
+  .wa-float:hover { transform: scale(1.1); }
+  @keyframes waPop {
+    from { opacity: 0; transform: scale(0); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .wa-tooltip {
+    position: absolute;
+    right: 110%; top: 50%;
+    transform: translateY(-50%);
+    background: var(--navy);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .wa-float:hover .wa-tooltip { opacity: 1; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    padding: 3rem 2rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand .logo { margin-bottom: 1rem; display: inline-flex; }
+  .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 260px; }
+  .footer-col h4 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    color: white;
+    font-size: 0.92rem;
+    margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-col ul a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.88rem;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--sky); }
+  .footer-bottom {
+    max-width: 1100px; margin: 0 auto;
+    padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+    font-size: 0.82rem;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; flex-direction: column; gap: 0; }
+    .nav-links.open {
+      display: flex;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: white;
+      border-bottom: 1px solid var(--light-gray);
+      padding: 1rem 2rem 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .nav-links.open li { padding: 0.7rem 0; border-bottom: 1px solid var(--light-gray); }
+    .nav-links.open li:last-child { border: none; }
+    .hamburger { display: flex; }
+
+    .hero-content { grid-template-columns: 1fr; gap: 2rem; padding-top: 6rem; }
+    .hero-visual { display: none; }
+    .hero-stats { grid-template-columns: repeat(3,1fr); }
+    .stat-num { font-size: 1.4rem; }
+
+    .booking-wrap { grid-template-columns: 1fr; gap: 2rem; }
+    .form-grid { grid-template-columns: 1fr; }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+
+    section { padding: 3.5rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="logo">
+    <div class="logo-icon">📚</div>
+    Student <span>Help</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://wa.me/918954616397?text=Hi!%20I%20want%20to%20book%20a%20service.%20Please%20guide%20me.%20%F0%9F%93%9A" class="nav-cta" target="_blank">📅 Book Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-shapes"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">Academic Support Services</div>
+      <h1 class="hero-title">
+        Complete Academic<br>Support for <span class="accent">Students</span>
+      </h1>
+      <p class="hero-desc">
+        From research papers to project reports, PPTs to software deployments — we cover every academic need with 100% plagiarism-free, on-time deliverables.
+      </p>
+      <div class="hero-btns">
+        <a href="https://wa.me/918954616397?text=Hi!%20I%20want%20to%20book%20a%20service.%20Please%20guide%20me.%20%F0%9F%93%9A" class="btn-primary" target="_blank">📅 Book Now</a>
+        <a href="https://wa.me/918954616397?text=Hi,%20I%20need%20academic%20help!" class="btn-whatsapp" target="_blank">
+          💬 Chat on WhatsApp
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Students Helped</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Plagiarism Free</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">24h</div>
+          <div class="stat-label">Fast Delivery</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="floating-card fc1">
+          <div class="fc-icon" style="background:#e0f2fe;">📄</div>
+          <div class="fc-text">
+            <div class="fc-title">Research Paper — IEEE Format</div>
+            <div class="fc-sub">0% Plagiarism Guaranteed</div>
+          </div>
+        </div>
+        <div class="floating-card fc2">
+          <div class="fc-icon" style="background:#d1fae5;">💻</div>
+          <div class="fc-text">
+            <div class="fc-title">Software-Based Projects</div>
+            <div class="fc-sub">With Full Deployment Support</div>
+          </div>
+        </div>
+        <div class="floating-card fc3">
+          <div class="fc-icon" style="background:#fef3c7;">🎥</div>
+          <div class="fc-text">
+            <div class="fc-title">Project Explanation Video</div>
+            <div class="fc-sub">Included with every project</div>
+          </div>
+        </div>
+        <div class="floating-card fc4">
+          <div class="fc-icon" style="background:#ede9fe;">📊</div>
+          <div class="fc-text">
+            <div class="fc-title">PPT Creation on Any Topic</div>
+            <div class="fc-sub">Professional & Engaging Slides</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="container">
+    <div class="section-tag">Why Choose Us</div>
+    <h2 class="section-title">Your Academic Success is<br>Our <span class="accent">Top Priority</span></h2>
+    <p class="section-desc">We don't just deliver work — we deliver confidence, quality, and peace of mind for every student we work with.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon" style="background:#e0f2fe;">🛡️</div>
+        <h3>100% Plagiarism Free</h3>
+        <p>Every document is checked with Turnitin or Grammarly. We provide a plagiarism report with every submission.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:#d1fae5;">⚡</div>
+        <h3>On-Time Delivery</h3>
+        <p>We understand deadlines. Our team works round-the-clock to ensure you never miss a submission date.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:#fef3c7;">🎓</div>
+        <h3>Expert Guidance</h3>
+        <p>Our team consists of experienced graduates and researchers who understand academic requirements deeply.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:#ede9fe;">💬</div>
+        <h3>24/7 Support</h3>
+        <p>Have a question? Reach us any time via WhatsApp. We're always here to answer and assist you.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:#fee2e2;">🔒</div>
+        <h3>Confidential & Safe</h3>
+        <p>Your personal data and project details are completely private. We never share your information.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:#d1fae5;">♻️</div>
+        <h3>Unlimited Revisions</h3>
+        <p>Not satisfied? We revise until you're 100% happy — no extra charge, no questions asked.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="section-tag">Our Services</div>
+      <h2 class="section-title">Everything You Need,<br><span class="accent">All in One Place</span></h2>
+      <p class="section-desc">From writing to coding to publication — explore our full range of academic support services designed for students.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-icon">📄</div>
+        <h3>Research Paper Writing (IEEE Format)</h3>
+        <p>High-quality research papers written in IEEE format with proper referencing, citations, and structure. Suitable for conferences and journals.</p>
+        <div class="badge-row">
+          <span class="badge green">Plagiarism Free</span>
+          <span class="badge">IEEE Format</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-icon">📁</div>
+        <h3>Soft Copy Assignments</h3>
+        <p>Well-structured, neatly formatted soft copy assignments for any subject — delivered digitally in Word, PDF, or any required format.</p>
+        <div class="badge-row">
+          <span class="badge">All Subjects</span>
+          <span class="badge">Fast Delivery</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-icon">📋</div>
+        <h3>Mini Project Reports (Phase-Wise)</h3>
+        <p>Complete mini project documentation prepared phase-by-phase — abstract, introduction, implementation, results, conclusion, and references.</p>
+        <div class="badge-row">
+          <span class="badge">Phase 1–4</span>
+          <span class="badge">Full Report</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-icon">💻</div>
+        <h3>Software-Based Projects with Deployment</h3>
+        <p>Subject-wise software projects with complete source code, documentation, and live deployment support. Works across various domains and languages.</p>
+        <div class="badge-row">
+          <span class="badge">Web / ML / IoT</span>
+          <span class="badge green">With Deployment</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-icon">🎥</div>
+        <h3>Project Explanation Video</h3>
+        <p>A clear, concise explanation video for your project provided with every software delivery — perfect for viva preparation and presentations.</p>
+        <div class="badge-row">
+          <span class="badge green">Included Free</span>
+          <span class="badge">HD Quality</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-icon">📰</div>
+        <h3>Research Paper Publication</h3>
+        <p>We assist with publishing your research paper in reputed journals and conferences — from writing to submission and correspondence.</p>
+        <div class="badge-row">
+          <span class="badge">Scopus / UGC</span>
+          <span class="badge">Indexed Journals</span>
+        </div>
+      </div>
+      <div class="service-card" style="grid-column: 1 / -1; max-width: 500px; margin: 0 auto;">
+        <div class="service-num">07</div>
+        <div class="service-icon">📊</div>
+        <h3>PPT Creation on Any Topic</h3>
+        <p>Professional, visually engaging PowerPoint presentations for seminars, projects, viva, or class presentations — designed to impress.</p>
+        <div class="badge-row">
+          <span class="badge">Any Topic</span>
+          <span class="badge">Custom Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="container">
+    <div class="booking-cta-wrap">
+      <div class="section-tag">Book a Service</div>
+      <h2 class="section-title">Ready to Get Started?<br><span class="accent">Chat With Us on WhatsApp</span></h2>
+      <p class="section-desc" style="margin-bottom:2.5rem;">
+        Just tap the button below — WhatsApp opens instantly and our team will guide you through everything. Fast, friendly, and free consultation!
+      </p>
+
+      <div class="booking-perks-row">
+        <div class="bp-item"><div class="perk-dot">✓</div> Free consultation</div>
+        <div class="bp-item"><div class="perk-dot">✓</div> No hidden charges</div>
+        <div class="bp-item"><div class="perk-dot">✓</div> Plagiarism report included</div>
+        <div class="bp-item"><div class="perk-dot">✓</div> Unlimited revisions</div>
+        <div class="bp-item"><div class="perk-dot">✓</div> 100% confidential</div>
+        <div class="bp-item"><div class="perk-dot">✓</div> Reply within minutes</div>
+      </div>
+
+      <a
+        href="https://wa.me/918954616397?text=Hi!%20I%20want%20to%20book%20a%20service.%20Please%20guide%20me.%20%F0%9F%93%9A"
+        class="btn-book-wa"
+        target="_blank"
+      >
+        <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.668 4.61 1.822 6.51L4 29l7.697-1.797A11.94 11.94 0 0016 28c6.627 0 12-5.373 12-12S22.627 3 16 3z" fill="#fff" fill-opacity=".2"/><path d="M16 5C10.477 5 6 9.477 6 15c0 2.16.68 4.16 1.84 5.8L6.5 26l5.36-1.32A10 10 0 1016 5z" fill="#fff"/><path d="M21.5 18.3c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" fill="#25D366"/></svg>
+        📅 Book Now on WhatsApp
+      </a>
+
+      <p class="wa-book-hint">Opens WhatsApp directly — no app login needed on desktop</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="test-header">
+      <div class="section-tag">Student Reviews</div>
+      <h2 class="section-title">What Students Say <span class="accent">About Us</span></h2>
+      <p class="section-desc">Don't take our word for it — here's what real students experienced when they worked with us.</p>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">Got my IEEE research paper done in 3 days with a plagiarism report. Quality was exceptional and my professor was impressed. Highly recommended!</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:linear-gradient(135deg,#1a56db,#38bdf8);">R</div>
+          <div>
+            <div class="test-name">Riya Sharma</div>
+            <div class="test-role">B.Tech CSE, 3rd Year</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">My mini project report phase 1 to 4 was done so neatly. They even provided an explanation video which saved me during viva. Amazing service!</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:linear-gradient(135deg,#10b981,#34d399);">A</div>
+          <div>
+            <div class="test-name">Arjun Mehta</div>
+            <div class="test-role">MCA, 2nd Year</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">The PPT they made for my seminar looked so professional. Everyone in my class was asking where I got it designed. Worth every rupee!</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:linear-gradient(135deg,#f59e0b,#fbbf24);">P</div>
+          <div>
+            <div class="test-name">Priya Nair</div>
+            <div class="test-role">MBA, 1st Year</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">They helped publish my research paper in a UGC-listed journal. The guidance was step-by-step and very professional. I couldn't have done it alone.</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa);">K</div>
+          <div>
+            <div class="test-name">Karthik V.</div>
+            <div class="test-role">M.Tech, Final Year</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">Software project was delivered on time with full source code and deployment. Super responsive on WhatsApp and explained every step clearly.</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:linear-gradient(135deg,#ec4899,#f472b6);">S</div>
+          <div>
+            <div class="test-name">Sneha Pillai</div>
+            <div class="test-role">B.Tech IT, 4th Year</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">Used their assignment writing service for 3 subjects. Always on time, zero plagiarism, and follows university format. My go-to academic support!</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:linear-gradient(135deg,#0891b2,#22d3ee);">M</div>
+          <div>
+            <div class="test-name">Mohammed Irfan</div>
+            <div class="test-role">BCA, 2nd Year</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">Frequently Asked <span class="accent">Questions</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is the work 100% plagiarism-free?<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Yes, absolutely. Every document is checked using plagiarism detection tools before delivery. You will receive a plagiarism report along with your work as proof.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How long does it take to complete a project?<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Delivery time depends on the complexity of the project. Simple assignments can be done in 24–48 hours, while research papers and software projects may take 3–7 days. We always confirm the timeline before you pay.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I pay for the service?<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">We accept UPI, bank transfer, and other digital payment methods. Payment is typically done after you approve the quote and before we begin the work.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is my information kept confidential?<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Absolutely. We treat all client details — your name, project topic, and contact information — with complete confidentiality. We never share your data with third parties.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I request revisions after delivery?<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Yes! We offer unlimited revisions until you are completely satisfied with the output. Just share your feedback and we'll make the necessary changes promptly.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you provide an explanation video for projects?<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Yes, a project explanation video is provided with every software-based project. This helps you understand and present the project confidently during viva or demos.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Which subjects and domains do you cover?<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">We cover a wide range of subjects including Computer Science, IT, Electronics, MBA, MCA, and more. Software projects span Web Development, Machine Learning, IoT, Data Science, and other domains.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-tag">Contact Us</div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h2>Let's Talk!</h2>
+        <p>Whether you have questions about a service or you're ready to get started — reach out anytime. We typically respond within minutes.</p>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:rgba(56,189,248,0.15);">📞</div>
+          <div class="contact-item-text">
+            <div class="label">Call / WhatsApp</div>
+            <div class="value">+91 89546 16397</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:rgba(56,189,248,0.15);">✉️</div>
+          <div class="contact-item-text">
+            <div class="label">Email Us</div>
+            <div class="value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c0b3b4b5a4a5aeb4a8a5acb080a1a3a1a4a5ada9a3eea9ae">[email&#160;protected]</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:rgba(56,189,248,0.15);">⏰</div>
+          <div class="contact-item-text">
+            <div class="label">Working Hours</div>
+            <div class="value">Mon–Sun, 9 AM – 10 PM</div>
+          </div>
+        </div>
+        <a href="https://wa.me/918954616397?text=Hi,%20I%20need%20academic%20help!" class="btn-whatsapp-lg" target="_blank">
+          💬 Chat on WhatsApp Now
+        </a>
+      </div>
+      <div class="contact-visual">
+        <div class="contact-highlight">
+          <h3>📬 Quick Response Guaranteed</h3>
+          <p>Send us a message on WhatsApp or email and our team will respond within 1–2 hours. No lengthy wait times — just fast, helpful support.</p>
+        </div>
+        <div class="contact-highlight">
+          <h3>🎯 Free Consultation</h3>
+          <p>Not sure what service you need? Talk to us first — we'll understand your requirements and recommend the best solution at the best price.</p>
+        </div>
+        <div class="guarantee-badge">
+          <div class="gb-icon">🏅</div>
+          <div class="gb-text">
+            <div class="gb-title">Plagiarism-Free Guarantee</div>
+            <div class="gb-sub">100% original work with Turnitin/Grammarly report included on every delivery.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#home" class="logo">
+        <div class="logo-icon">📚</div>
+        Student <span>Help</span>
+      </a>
+      <p>Your trusted partner for complete academic support. Quality, confidentiality, and on-time delivery — guaranteed.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://wa.me/918954616397?text=Hi!%20I%20want%20to%20book%20a%20service.%20Please%20guide%20me.%20%F0%9F%93%9A" target="_blank">Book Now</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Research Papers</a></li>
+        <li><a href="#services">Assignments</a></li>
+        <li><a href="#services">Project Reports</a></li>
+        <li><a href="#services">Software Projects</a></li>
+        <li><a href="#services">Paper Publication</a></li>
+        <li><a href="#services">PPT Creation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Student Help in Academic. All rights reserved.</span>
+    <span>Made with ❤️ for students</span>
+  </div>
+</footer>
+
+<!-- FLOATING WA BUTTON -->
+<a href="https://wa.me/918954616397?text=Hi,%20I%20need%20academic%20help!" class="wa-float" target="_blank" title="Chat on WhatsApp">
+  <span class="wa-tooltip">Chat on WhatsApp</span>
+  💬
+</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // NAV scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  // Close nav on link click
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // FAQ toggle
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Form submit → Send all booking data to WhatsApp
+  function submitForm(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    const name    = form.querySelector('input[type="text"]').value.trim();
+    const email   = form.querySelector('input[type="email"]').value.trim();
+    const phone   = form.querySelector('input[type="tel"]').value.trim();
+    const service = form.querySelector('select').value.trim();
+    const details = form.querySelector('textarea').value.trim();
+
+    const message =
+`📚 *New Booking Request – Student Help in Academic*
+
+👤 *Name:* ${name}
+📧 *Email:* ${email}
+📞 *Phone:* ${phone}
+📋 *Service Required:* ${service}
+📝 *Project Details:*
+${details}
+
+_Sent from the website booking form._`;
+
+    // Show success message
+    const successMsg = document.getElementById('successMsg');
+    successMsg.style.display = 'block';
+    form.reset();
+    setTimeout(() => successMsg.style.display = 'none', 6000);
+
+    // Open WhatsApp with pre-filled message
+    const waURL = `https://wa.me/918954616397?text=${encodeURIComponent(message)}`;
+    window.open(waURL, '_blank');
+  }
+
+  // Intersection observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.why-card, .service-card, .test
